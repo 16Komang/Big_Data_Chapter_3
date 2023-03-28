@@ -9,19 +9,19 @@ if __name__ == "__main__":
         exit(-1)
 
 # Intialize the Spark Context with app name
-sc = SparkContext(appName="Log Analytics")
+sc = SparkContext("local","Log Analytics")
 
 # Get the lines from the textfile, create 4 partitions
-access_log = sc.textFile(sys.argv[1], 4)
+access_log = sc.textFile("/D/semester 6/Big Data/text.txt")
 
 #Filter Lines with ERROR only
-error_log = access_log.filter(lambda x: "ERROR" in x)
+error_log = access_log.filter(lambda x: "Polinema" in x)
 
 # Cache error log in memory
 cached_log = error_log.cache()
 
 # Now perform an action -  count
-print “Total number of error records are %s” % (cached_log.count())
+print Total number of error records are %s% (cached_log.count())
 
 # Now find the number of lines with 
-print “Number of product pages visited that have Errors is %s” % (cached_log.filter(lambda x: “product” in x).count()) 
+print ï¿½Number of product pages visited that have Errors is %sï¿½ % (cached_log.filter(lambda x: ï¿½productï¿½ in x).count()) 
